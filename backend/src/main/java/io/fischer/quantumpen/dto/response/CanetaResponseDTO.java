@@ -1,6 +1,8 @@
 package io.fischer.quantumpen.dto.response;
 
 import io.fischer.quantumpen.model.Caneta;
+import java.util.ArrayList;
+import java.util.List;
 
 public record CanetaResponseDTO(
         Long id,
@@ -41,6 +43,12 @@ public record CanetaResponseDTO(
                 c.getDurabilidade(),
                 c.getTipoPonta()
         );
+    }
+
+    public static List<CanetaResponseDTO> fromEntities(List<Caneta> list) {
+        List<CanetaResponseDTO> listDto = new ArrayList<>();
+        for(Caneta c : list) listDto.add(fromEntity(c));
+        return listDto;
     }
 }
 
