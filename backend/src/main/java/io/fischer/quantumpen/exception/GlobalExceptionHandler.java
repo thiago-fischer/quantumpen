@@ -1,6 +1,6 @@
 package io.fischer.quantumpen.exception;
 
-import io.fischer.quantumpen.dto.error.ExceptionResponse;
+import io.fischer.quantumpen.produtos.dto.error.ExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

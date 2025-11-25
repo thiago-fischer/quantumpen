@@ -1,6 +1,6 @@
-package io.fischer.quantumpen.dto.response;
+package io.fischer.quantumpen.produtos.dto.response;
 
-import io.fischer.quantumpen.model.Caneta;
+import io.fischer.quantumpen.produtos.model.Caneta;
 import java.util.ArrayList;
 import java.util.List;
 

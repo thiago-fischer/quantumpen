@@ -1,9 +1,9 @@
-package io.fischer.quantumpen.controller;
+package io.fischer.quantumpen.produtos.controller;
 
-import io.fischer.quantumpen.dto.request.CreateCanetaDTO;
-import io.fischer.quantumpen.dto.request.UpdateCanetaDTO;
-import io.fischer.quantumpen.dto.response.CanetaResponseDTO;
-import io.fischer.quantumpen.service.CanetaService;
+import io.fischer.quantumpen.produtos.dto.request.CreateCanetaDTO;
+import io.fischer.quantumpen.produtos.dto.request.UpdateCanetaDTO;
+import io.fischer.quantumpen.produtos.dto.response.CanetaResponseDTO;
+import io.fischer.quantumpen.produtos.service.CanetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

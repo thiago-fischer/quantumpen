@@ -1,11 +1,11 @@
-package io.fischer.quantumpen.service;
+package io.fischer.quantumpen.produtos.service;
 
-import io.fischer.quantumpen.dto.request.CreateCanetaDTO;
-import io.fischer.quantumpen.dto.request.UpdateCanetaDTO;
-import io.fischer.quantumpen.dto.response.CanetaResponseDTO;
+import io.fischer.quantumpen.produtos.dto.request.CreateCanetaDTO;
+import io.fischer.quantumpen.produtos.dto.request.UpdateCanetaDTO;
+import io.fischer.quantumpen.produtos.dto.response.CanetaResponseDTO;
 import io.fischer.quantumpen.exception.NotFoundException;
-import io.fischer.quantumpen.model.Caneta;
-import io.fischer.quantumpen.repository.CanetaRepository;
+import io.fischer.quantumpen.produtos.model.Caneta;
+import io.fischer.quantumpen.produtos.repository.CanetaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

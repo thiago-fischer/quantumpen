@@ -1,8 +1,8 @@
-package io.fischer.quantumpen.dto.request;
+package io.fischer.quantumpen.produtos.dto.request;
 
-import io.fischer.quantumpen.model.Caneta;
+import io.fischer.quantumpen.produtos.model.Caneta;
 
-public record CreateCanetaDTO(
+public record UpdateCanetaDTO(
         String nome,
         String marca,
         String corTinta,
@@ -20,8 +20,7 @@ public record CreateCanetaDTO(
         double durabilidade,
         String tipoPonta
 ) {
-    public Caneta toEntity() {
-        Caneta c = new Caneta();
+    public void applyTo(Caneta c) {
         c.setNome(nome);
         c.setMarca(marca);
         c.setCorTinta(corTinta);
@@ -38,7 +37,5 @@ public record CreateCanetaDTO(
         c.setRecarregavel(recarregavel);
         c.setDurabilidade(durabilidade);
         c.setTipoPonta(tipoPonta);
-        return c;
     }
 }
-

@@ -1,4 +1,4 @@
-package io.fischer.quantumpen.model;
+package io.fischer.quantumpen.produtos.model;
 
 import jakarta.persistence.*;
 
