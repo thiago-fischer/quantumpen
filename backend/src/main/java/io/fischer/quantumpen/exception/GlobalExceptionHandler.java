@@ -1,10 +1,10 @@
 package io.fischer.quantumpen.exception;
 
-import io.fischer.quantumpen.produtos.dto.error.ExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import java.util.Date;
 
@@ -28,6 +28,17 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ExceptionResponse> handleNotFound(NotFoundException ex) {
         ExceptionResponse body = new ExceptionResponse(new Date(),"Entidade não encontrada", ex.getMessage());
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ExceptionResponse> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        String paramValue = (ex.getValue() == null) ? "null" : ex.getValue().toString();
+        ExceptionResponse body = new ExceptionResponse(
+                new Date(),
+                "Parâmetro inválido na requisição.",
+                "O parâmetro " + ex.getName() + " recebeu " + paramValue + ", mas esperava um número"
+        );
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
 }

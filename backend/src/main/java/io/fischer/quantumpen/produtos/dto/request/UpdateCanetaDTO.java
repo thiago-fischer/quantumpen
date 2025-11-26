@@ -10,7 +10,6 @@ public record UpdateCanetaDTO(
         String colecao,
         double espessuraPonta,
         double preco,
-        int qtdEstoque,
         String codBarra,
         double peso,
         String materialCorpo,
@@ -28,7 +27,6 @@ public record UpdateCanetaDTO(
         c.setColecao(colecao);
         c.setEspessuraPonta(espessuraPonta);
         c.setPreco(preco);
-        c.setQtdEstoque(qtdEstoque);
         c.setCodBarra(codBarra);
         c.setPeso(peso);
         c.setMaterialCorpo(materialCorpo);

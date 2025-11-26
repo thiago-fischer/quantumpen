@@ -19,7 +19,6 @@ public class Caneta {
     private String colecao;
     private double espessuraPonta;
     private double preco;
-    private int qtdEstoque;
     private String codBarra;
     private double peso;
     private String materialCorpo;
@@ -91,14 +90,6 @@ public class Caneta {
 
     public void setPreco(double preco) {
         this.preco = preco;
-    }
-
-    public int getQtdEstoque() {
-        return qtdEstoque;
-    }
-
-    public void setQtdEstoque(int qtdEstoque) {
-        this.qtdEstoque = qtdEstoque;
     }
 
     public String getCodBarra() {

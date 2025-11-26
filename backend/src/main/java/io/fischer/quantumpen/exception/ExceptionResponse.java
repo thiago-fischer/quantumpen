@@ -1,4 +1,4 @@
-package io.fischer.quantumpen.produtos.dto.error;
+package io.fischer.quantumpen.exception;
 
 import java.util.Date;
 
