@@ -1,6 +1,6 @@
 package io.fischer.quantumpen.exception;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public record ExceptionResponse(Date data, String mensagem, String detalhes) {
+public record ExceptionResponse(LocalDate data, String mensagem, String detalhes) {
 }
