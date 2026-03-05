@@ -4,53 +4,123 @@ import io.fischer.quantumpen.users.dto.request.CreateUserRequestDTO;
 import io.fischer.quantumpen.users.dto.request.UpdateUserRequestDTO;
 import io.fischer.quantumpen.users.dto.response.UserResponseDTO;
 import io.fischer.quantumpen.users.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.fischer.quantumpen.shared.dto.ApiResponseDTO;
+import io.fischer.quantumpen.shared.response.ResponseFactory;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping("/api/v1/users")
+@Tag(name = "Usuários", description = "Gerenciamento de usuários da plataforma")
 public class UserController {
 
-    @Autowired
-    UserService service;
+    private final UserService service;
 
+    public UserController(UserService service) {
+        this.service = service;
+    }
+
+    @Operation(summary = "Listar todos os usuários")
     @GetMapping
-    public List<UserResponseDTO> findAll() {
-        return service.buscarTodos();
+    public ResponseEntity<ApiResponseDTO<List<UserResponseDTO>>> findAll(
+            HttpServletRequest request
+    ) {
+
+        List<UserResponseDTO> users = service.buscarTodos();
+
+        return ResponseFactory.ok(
+                users,
+                "Usuários listados com sucesso",
+                request
+        );
     }
 
+    @Operation(summary = "Buscar usuário por ID")
     @GetMapping("/{id}")
-    public UserResponseDTO findById(@PathVariable("id") Long id) {
-        return service.buscarId(id);
+    public ResponseEntity<ApiResponseDTO<UserResponseDTO>> findById(
+            @PathVariable Long id,
+            HttpServletRequest request
+    ) {
+
+        UserResponseDTO user = service.buscarId(id);
+
+        return ResponseFactory.ok(
+                user,
+                "Usuário encontrado",
+                request
+        );
     }
 
+    @Operation(summary = "Criar novo usuário")
     @PostMapping
-    public UserResponseDTO createUser(@RequestBody CreateUserRequestDTO dto) {
-        return service.criarUsuario(dto);
+    public ResponseEntity<ApiResponseDTO<UserResponseDTO>> createUser(
+            @RequestBody CreateUserRequestDTO dto,
+            HttpServletRequest request
+    ) {
+
+        UserResponseDTO user = service.criarUsuario(dto);
+
+        return ResponseFactory.created(
+                user,
+                "Usuário criado com sucesso",
+                request
+        );
     }
 
+    @Operation(summary = "Substituir usuário (PUT)")
     @PutMapping("/{id}")
-    public UserResponseDTO putUser(
-            @PathVariable("id") Long id,
-            @RequestBody UpdateUserRequestDTO dto
+    public ResponseEntity<ApiResponseDTO<UserResponseDTO>> putUser(
+            @PathVariable Long id,
+            @RequestBody UpdateUserRequestDTO dto,
+            HttpServletRequest request
     ) {
-        return service.putUsuario(id, dto);
+
+        UserResponseDTO user = service.putUsuario(id, dto);
+
+        return ResponseFactory.ok(
+                user,
+                "Usuário atualizado com sucesso",
+                request
+        );
     }
 
+    @Operation(summary = "Atualizar parcialmente usuário (PATCH)")
     @PatchMapping("/{id}")
-    public UserResponseDTO patchUser(
-            @PathVariable("id") Long id,
-            @RequestBody UpdateUserRequestDTO dto
+    public ResponseEntity<ApiResponseDTO<UserResponseDTO>> patchUser(
+            @PathVariable Long id,
+            @RequestBody UpdateUserRequestDTO dto,
+            HttpServletRequest request
     ) {
-        return service.patchUsuario(id, dto);
+
+        UserResponseDTO user = service.patchUsuario(id, dto);
+
+        return ResponseFactory.ok(
+                user,
+                "Usuário atualizado parcialmente",
+                request
+        );
     }
 
+    @Operation(summary = "Desativar usuário")
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id) {
+    public ResponseEntity<ApiResponseDTO<Void>> deleteUser(
+            @PathVariable Long id,
+            HttpServletRequest request
+    ) {
+
         service.desativarUsuario(id);
-        return ResponseEntity.noContent().build();
+
+        return ResponseFactory.noContent(
+                "Usuário desativado com sucesso",
+                request
+        );
     }
 }
