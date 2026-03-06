@@ -1,7 +1,7 @@
-package io.fischer.quantumpen.clientes.mapper;
+package io.fischer.quantumpen.shared.mapper;
 
-import io.fischer.quantumpen.clientes.dto.common.TelefoneDTO;
-import io.fischer.quantumpen.clientes.model.Telefone;
+import io.fischer.quantumpen.shared.dto.TelefoneDTO;
+import io.fischer.quantumpen.shared.model.Telefone;
 
 public class TelefoneMapper {
 

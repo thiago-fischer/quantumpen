@@ -1,35 +1,36 @@
-package io.fischer.quantumpen.clientes.dto.request;
-
+package io.fischer.quantumpen.funcionarios.dto.request;
 
 import io.fischer.quantumpen.shared.dto.EnderecoDTO;
 import io.fischer.quantumpen.shared.dto.TelefoneDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public record CreateClienteDTO(
-        @NotBlank
+public record UpdateFuncionarioDTO(
+
         String nome,
 
         LocalDate dataNascimento,
 
-        @NotBlank
         String cpf,
 
-        @NotEmpty
+        String cargo,
+
         @Valid
         List<TelefoneDTO> telefones,
 
         @Email
         String email,
 
+        String senha,
+
         @Valid
         EnderecoDTO endereco,
 
-        @NotBlank
-        String senha
-){}
+        @NotNull
+        Double salario
+
+) {}

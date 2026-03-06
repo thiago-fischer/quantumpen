@@ -4,6 +4,8 @@ import io.fischer.quantumpen.clientes.dto.request.CreateClienteDTO;
 import io.fischer.quantumpen.clientes.dto.request.UpdateClienteDTO;
 import io.fischer.quantumpen.clientes.dto.response.ClienteResponseDTO;
 import io.fischer.quantumpen.clientes.model.Cliente;
+import io.fischer.quantumpen.shared.mapper.EnderecoMapper;
+import io.fischer.quantumpen.shared.mapper.TelefoneMapper;
 
 import java.util.List;
 

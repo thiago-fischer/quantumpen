@@ -1,11 +1,9 @@
 package io.fischer.quantumpen.clientes.model;
 
+import io.fischer.quantumpen.shared.model.Endereco;
+import io.fischer.quantumpen.shared.model.Telefone;
 import io.fischer.quantumpen.users.model.User;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.List;

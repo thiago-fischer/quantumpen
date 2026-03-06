@@ -1,7 +1,7 @@
-package io.fischer.quantumpen.clientes.mapper;
+package io.fischer.quantumpen.shared.mapper;
 
-import io.fischer.quantumpen.clientes.dto.common.EnderecoDTO;
-import io.fischer.quantumpen.clientes.model.Endereco;
+import io.fischer.quantumpen.shared.dto.EnderecoDTO;
+import io.fischer.quantumpen.shared.model.Endereco;
 
 public class EnderecoMapper {
 

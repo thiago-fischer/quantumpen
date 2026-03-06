@@ -112,4 +112,21 @@ public class ClienteController {
         );
     }
 
+    @PostMapping("/batch")
+    @Operation(summary = "Cadastrar lista de clientes")
+    public ResponseEntity<ApiResponseDTO<List<ClienteResponseDTO>>> createClientes(
+            @Valid @RequestBody List<CreateClienteDTO> dtos,
+            HttpServletRequest request
+    ) {
+
+        List<ClienteResponseDTO> clientes = dtos.stream()
+                .map(service::createCliente)
+                .toList();
+        return ResponseFactory.created(
+                clientes,
+                "Clientes cadastrados com sucesso",
+                request
+        );
+    }
+
 }
