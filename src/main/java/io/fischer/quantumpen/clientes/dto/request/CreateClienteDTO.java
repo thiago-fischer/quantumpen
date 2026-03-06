@@ -13,14 +13,24 @@ import java.time.LocalDate;
 import java.util.List;
 
 public record CreateClienteDTO(
-        @NotBlank String nome,
+        @NotBlank
+        String nome,
+
         LocalDate dataNascimento,
-        @NotBlank String cpf,
+
+        @NotBlank
+        String cpf,
 
         @NotEmpty
         @Valid
         List<TelefoneDTO> telefones,
 
-        @Email String email,
-        @Valid EnderecoDTO endereco
+        @Email
+        String email,
+
+        @Valid
+        EnderecoDTO endereco,
+
+        @NotBlank
+        String senha
 ){}

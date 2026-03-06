@@ -14,5 +14,6 @@ public record ClienteResponseDTO(
         String cpf,
         List<TelefoneDTO> telefones,
         String email,
-        EnderecoDTO endereco
+        EnderecoDTO endereco,
+        String role
 ) {}

@@ -17,30 +17,21 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private String nome;
 
     private LocalDate dataNascimento;
     private LocalDate dataCadastro = LocalDate.now();
-
-    @NotBlank
     private String cpf;
 
     @ElementCollection
-    @Valid
     private List<Telefone> telefones;
 
-    @Email
-    private String email;
-
-    @NotNull
     @Embedded
-    @Valid
     private Endereco endereco;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private User userId;
+    @JoinColumn(name = "usuarios_id")
+    private User user;
 
     public Cliente() {}
 
@@ -92,19 +83,19 @@ public class Cliente {
         this.telefones = telefones;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

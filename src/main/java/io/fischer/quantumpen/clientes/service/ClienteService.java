@@ -7,6 +7,7 @@ import io.fischer.quantumpen.clientes.mapper.ClienteMapper;
 import io.fischer.quantumpen.clientes.model.Cliente;
 import io.fischer.quantumpen.clientes.repository.ClienteRepository;
 import io.fischer.quantumpen.exception.NotFoundException;
+import io.fischer.quantumpen.users.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,8 +41,17 @@ public class ClienteService {
 
     public ClienteResponseDTO createCliente(CreateClienteDTO dto) {
         logger.info("Criando um novo cliente");
-        Cliente entity = repository.save(ClienteMapper.toEntity(dto));
-        return ClienteMapper.toDTO(entity);
+        Cliente cliente = ClienteMapper.toEntity(dto);
+
+        User user = new User();
+        user.setEmail(dto.email());
+        user.setSenha(dto.senha());
+        user.setRole("CLIENTE");
+        user.setAtivo(true);
+
+        cliente.setUser(user);
+
+        return ClienteMapper.toDTO(repository.save(cliente));
     }
 
     public ClienteResponseDTO putCliente(Long id, UpdateClienteDTO dto) {

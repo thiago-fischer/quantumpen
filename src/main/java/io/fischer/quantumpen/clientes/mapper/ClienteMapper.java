@@ -15,7 +15,6 @@ public class ClienteMapper {
         entity.setNome(dto.nome());
         entity.setDataNascimento(dto.dataNascimento());
         entity.setCpf(dto.cpf());
-        entity.setEmail(dto.email());
 
         var telefonesEntity = dto.telefones()
                 .stream()
@@ -33,7 +32,6 @@ public class ClienteMapper {
         if (dto.nome() != null) entity.setNome(dto.nome());
         if (dto.dataNascimento() != null) entity.setDataNascimento(dto.dataNascimento());
         if (dto.cpf() != null) entity.setCpf(dto.cpf());
-        if (dto.email() != null) entity.setEmail(dto.email());
         if (dto.telefones() != null) entity.setTelefones(dto.telefones()
                 .stream()
                 .map(TelefoneMapper::toEntity)
@@ -45,7 +43,6 @@ public class ClienteMapper {
         entity.setNome(dto.nome());
         entity.setDataNascimento(dto.dataNascimento());
         entity.setCpf(dto.cpf());
-        entity.setEmail(dto.email());
 
         var telefonesEntity = dto.telefones()
                 .stream()
@@ -67,8 +64,9 @@ public class ClienteMapper {
                 entity.getTelefones().stream()
                         .map(TelefoneMapper::fromEntity)
                         .toList(),
-                entity.getEmail(),
-                EnderecoMapper.fromEntity(entity.getEndereco())
+                entity.getUser().getEmail(),
+                EnderecoMapper.fromEntity(entity.getEndereco()),
+                entity.getUser().getRole()
         );
     }
 
