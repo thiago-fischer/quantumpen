@@ -1,5 +1,6 @@
 package io.fischer.quantumpen.clientes.model;
 
+import io.fischer.quantumpen.users.model.User;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -36,6 +37,10 @@ public class Cliente {
     @Embedded
     @Valid
     private Endereco endereco;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private User userId;
 
     public Cliente() {}
 
