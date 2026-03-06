@@ -9,14 +9,4 @@ public record EnderecoDTO(
         @NotBlank String cidade,
         @NotBlank String estado,
         @NotBlank String cep
-) {
-    public Endereco toEntity() {
-        Endereco entity = new Endereco();
-        entity.setLogradouro(logradouro);
-        entity.setBairro(bairro);
-        entity.setCidade(cidade);
-        entity.setEstado(estado);
-        entity.setCep(cep);
-        return entity;
-    }
-}
+) {}

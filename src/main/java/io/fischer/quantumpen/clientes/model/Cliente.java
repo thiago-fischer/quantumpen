@@ -1,5 +1,6 @@
 package io.fischer.quantumpen.clientes.model;
 
+import io.fischer.quantumpen.users.model.User;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -16,26 +17,21 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private String nome;
 
     private LocalDate dataNascimento;
     private LocalDate dataCadastro = LocalDate.now();
-
-    @NotBlank
     private String cpf;
 
     @ElementCollection
-    @Valid
     private List<Telefone> telefones;
 
-    @Email
-    private String email;
-
-    @NotNull
     @Embedded
-    @Valid
     private Endereco endereco;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuarios_id")
+    private User user;
 
     public Cliente() {}
 
@@ -87,19 +83,19 @@ public class Cliente {
         this.telefones = telefones;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

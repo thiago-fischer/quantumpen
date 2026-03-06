@@ -3,7 +3,6 @@ package io.fischer.quantumpen.clientes.dto.request;
 
 import io.fischer.quantumpen.clientes.dto.common.EnderecoDTO;
 import io.fischer.quantumpen.clientes.dto.common.TelefoneDTO;
-import io.fischer.quantumpen.clientes.model.Cliente;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -12,7 +11,7 @@ import jakarta.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
 
-public record CreateClienteDTO(
+public record UpdateClienteDTO(
         @NotBlank
         String nome,
 
