@@ -1,8 +1,8 @@
 package io.fischer.quantumpen.clientes.dto.request;
 
 
-import io.fischer.quantumpen.clientes.dto.common.EnderecoDTO;
-import io.fischer.quantumpen.clientes.dto.common.TelefoneDTO;
+import io.fischer.quantumpen.shared.dto.EnderecoDTO;
+import io.fischer.quantumpen.shared.dto.TelefoneDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

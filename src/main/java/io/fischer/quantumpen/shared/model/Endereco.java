@@ -1,4 +1,4 @@
-package io.fischer.quantumpen.clientes.model;
+package io.fischer.quantumpen.shared.model;
 
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;

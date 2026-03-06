@@ -1,4 +1,4 @@
-package io.fischer.quantumpen.clientes.dto.common;
+package io.fischer.quantumpen.shared.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
