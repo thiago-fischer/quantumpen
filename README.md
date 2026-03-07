@@ -104,6 +104,86 @@ A aplicação estará disponível em `http://localhost:8080`
 
 O sistema utiliza Spring Security para autenticação e autorização. Configure as credenciais no arquivo `application.properties`.
 
+## 🔑 Como autenticar na API (JWT)
+
+A API utiliza **JWT (JSON Web Token)** para autenticação.
+
+Para testar os endpoints protegidos no **Swagger**, siga os passos abaixo.
+
+### 1️⃣ Realizar login
+
+No Swagger, acesse o endpoint:
+
+```
+POST /api/v1/auth/login
+```
+
+Utilize as seguintes credenciais de teste:
+
+```json
+{
+  "email": "admin@quantumpen.com.br",
+  "senha": "admin"
+}
+```
+
+Após executar a requisição, a API retornará um token JWT:
+
+```json
+{
+  "token": "seu_token_jwt_aqui"
+}
+```
+
+---
+
+### 2️⃣ Autorizar no Swagger
+
+1. Copie o **token** retornado pelo login
+2. Clique no botão **Authorize** no topo do Swagger
+3. Cole o token no campo:
+
+```
+Bearer SEU_TOKEN_AQUI
+```
+
+Exemplo:
+
+```
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+4. Clique em **Authorize**
+5. Agora você poderá acessar os endpoints protegidos da API.
+
+---
+
+### 3️⃣ Testar endpoints protegidos
+
+Depois de autorizado, você poderá testar endpoints como:
+
+```
+/api/clientes
+/api/produtos
+/api/estoque
+/api/funcionarios
+```
+
+---
+
+💡 **Dica:**
+Se preferir, você também pode testar a API utilizando ferramentas como:
+
+* **Postman**
+* **Insomnia**
+* **curl**
+
+Lembre-se sempre de enviar o header:
+
+```
+Authorization: Bearer SEU_TOKEN
+```
+
 ## 📄 Configuração
 
 Edite o arquivo `src/main/resources/application.properties` para configurar:
