@@ -8,6 +8,7 @@ import io.fischer.quantumpen.shared.dto.ApiResponseDTO;
 import io.fischer.quantumpen.shared.response.ResponseFactory;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/canetas")
 @Tag(name = "Canetas", description = "Gerenciamento de canetas da QuantumPen")
+@SecurityRequirement(name = "bearerAuth")
 public class CanetaController {
 
     private final CanetaService service;
