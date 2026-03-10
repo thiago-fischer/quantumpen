@@ -8,7 +8,6 @@ import io.fischer.quantumpen.shared.dto.ApiResponseDTO;
 import io.fischer.quantumpen.shared.response.ResponseFactory;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/canetas")
 @Tag(name = "Canetas", description = "Gerenciamento de canetas da QuantumPen")
-@SecurityRequirement(name = "bearerAuth")
 public class CanetaController {
 
     private final CanetaService service;
@@ -32,11 +30,12 @@ public class CanetaController {
 
     @Operation(summary = "Listar todas as canetas")
     @GetMapping
+
     public ResponseEntity<ApiResponseDTO<List<CanetaResponseDTO>>> encontrarTodos(
             HttpServletRequest request
     ) {
 
-        List<CanetaResponseDTO> canetas = service.encontrarTodos();
+        List<CanetaResponseDTO> canetas = service.findAll();
 
         return ResponseFactory.ok(
                 canetas,
@@ -52,7 +51,7 @@ public class CanetaController {
             HttpServletRequest request
     ) {
 
-        CanetaResponseDTO caneta = service.encontrarId(id);
+        CanetaResponseDTO caneta = service.findById(id);
 
         return ResponseFactory.ok(
                 caneta,
@@ -68,7 +67,7 @@ public class CanetaController {
             HttpServletRequest request
     ) {
 
-        CanetaResponseDTO caneta = service.criarCaneta(canetaDTO);
+        CanetaResponseDTO caneta = service.createCaneta(canetaDTO);
 
         return ResponseFactory.created(
                 caneta,
@@ -85,7 +84,7 @@ public class CanetaController {
             HttpServletRequest request
     ) {
 
-        CanetaResponseDTO caneta = service.editarCaneta(id, canetaDTO);
+        CanetaResponseDTO caneta = service.PutCaneta(id, canetaDTO);
 
         return ResponseFactory.ok(
                 caneta,
@@ -101,7 +100,7 @@ public class CanetaController {
             HttpServletRequest request
     ) {
 
-        service.deletarCaneta(id);
+        service.deleteCaneta(id);
 
         return ResponseFactory.noContent(
                 "Caneta removida com sucesso",

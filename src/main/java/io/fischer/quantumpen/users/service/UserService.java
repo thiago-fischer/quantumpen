@@ -7,12 +7,14 @@ import io.fischer.quantumpen.users.dto.response.UserResponseDTO;
 import io.fischer.quantumpen.users.mapper.UserMapper;
 import io.fischer.quantumpen.users.model.User;
 import io.fischer.quantumpen.users.repository.UserRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 @Service
+@PreAuthorize("hasRole('ADMIN')")
 public class UserService {
 
     private final Logger logger = Logger.getLogger(UserService.class.getName());

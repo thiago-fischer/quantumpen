@@ -9,11 +9,13 @@ import io.fischer.quantumpen.exception.NotFoundException;
 import io.fischer.quantumpen.produtos.model.Caneta;
 import io.fischer.quantumpen.produtos.repository.CanetaRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 public class EstoqueService {
 
     private final EstoqueRepository repository;
@@ -55,12 +57,11 @@ public class EstoqueService {
         return EstoqueResponseDTO.fromEntity(updatedEntity);
     }
 
-    public ResponseEntity<?> deletarEstoque(Long id) {
+    public void deletarEstoque(Long id) {
         Estoque entity = repository.findById(id).orElseThrow(
                 () -> new NotFoundException("Estoque com o ID " + id + " não encontrado!")
         );
         repository.delete(entity);
-        return ResponseEntity.noContent().build();
     }
 
     public List<EstoqueResponseDTO> buscarPorProduto(Long produtoId) {
