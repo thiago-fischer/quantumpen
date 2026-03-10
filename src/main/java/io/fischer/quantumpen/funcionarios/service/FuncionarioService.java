@@ -8,12 +8,14 @@ import io.fischer.quantumpen.funcionarios.mapper.FuncionarioMapper;
 import io.fischer.quantumpen.funcionarios.model.Funcionario;
 import io.fischer.quantumpen.funcionarios.repository.FuncionarioRepository;
 import io.fischer.quantumpen.users.model.User;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 @Service
+@PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 public class FuncionarioService {
 
     private final FuncionarioRepository repository;
